@@ -1,0 +1,22 @@
+{
+    "name": "nexteam.id/rts",
+    "authors": [
+        {
+            "name": "ilzam",
+            "email": "ilzammulkhaq85@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^3.5",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\" : "Controller/",
+            "Core\\": "Core/",
+            "Models\\": "Models/",
+            "Database\\": "Database/",
+            "Middleware\\": "Middleware/"
+        }
+    }
+}
