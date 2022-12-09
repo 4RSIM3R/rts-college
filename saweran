@@ -1,0 +1,43 @@
+#!/usr/bin/env php
+
+<?php
+
+use Core\Database;
+use Database\Migrations\RoomMigrations;
+use Database\Migrations\ScheduleMigration;
+use Database\Migrations\TenantMigration;
+use Database\Migrations\UserMigration;
+use Dotenv\Dotenv;
+
+require "vendor/autoload.php";
+
+try {
+	$dotenv = Dotenv::createImmutable(__DIR__);
+	$dotenv->load();
+} catch (Exception $e) {
+	var_dump($e);
+	die(0);
+}
+
+$migrations = [
+	new UserMigration(),
+	new RoomMigrations(),
+	new TenantMigration(),
+	new ScheduleMigration(),
+];
+
+$database = Database::getInstance();
+
+if (!isset($argv[1])) {
+	printf("Invalid Command");
+	die(0);
+}
+
+// more command pattern matching here
+// $arguments = explode(":", $argv[1]);
+
+if ($argv[1] == "migrate:up") {
+	$database->migrate($migrations);
+} else if ($argv[1] == "migrate:rollback") {
+	$database->down($migrations);
+}
