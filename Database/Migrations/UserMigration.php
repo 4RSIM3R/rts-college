@@ -19,7 +19,7 @@ class UserMigration implements Migration
 	public function up(Schema $schema)
 	{
 		$table = $schema->createTable('users');
-		$table->addColumn("id", "integer", ["unsigned" => true]);
+		$table->addColumn("id", "integer", ["unsigned" => true])->setAutoincrement(true);
 		$table->addColumn("email", "string");
 		$table->addColumn("password", "string");
 		$table->setPrimaryKey(["id"]);

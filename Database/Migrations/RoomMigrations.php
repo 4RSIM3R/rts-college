@@ -17,7 +17,7 @@ class RoomMigrations implements Migration
 	public function up(Schema $schema)
 	{
 		$table = $schema->createTable('rooms');
-		$table->addColumn("id", "integer", ["unsigned" => true]);
+		$table->addColumn("id", "integer", ["unsigned" => true])->setAutoincrement(true);
 		$table->addColumn("name", "string");
 		$table->addColumn("location", "string");
 		$table->setPrimaryKey(["id"]);

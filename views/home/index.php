@@ -7,9 +7,11 @@
 		</button>
 	</div>
 	<hr/>
-	<div class="max-w-sm my-4">
-		<p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore ex ipsa
-			praesentium quod, sequi.</p>
+	<div class="max-w-md my-4">
+		<p class="text-sm">
+			Aku Benci Untuk Mencintaimu, aku tak tau apa yang terjadi
+			Yang kutau pasti.., aku benci untuk mencintaimu <|^_^|>
+		</p>
 	</div>
 
 	<form>
@@ -54,24 +56,28 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-				<td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-					Ruang LSI 1, 2, 3 - Gedung Sipil
-				</td>
-				<td class="py-4 px-6">
-					<?= date('d F y', time()) ?>
-				</td>
-				<td class="py-4 px-6">
-					07:00 - 15:00
-				</td>
-				<td class="py-4 px-6 flex flex-row">
-					<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">WSEC</span>
-					<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">INTERNAL</span>
-				</td>
-				<td class="py-4 px-6">
-					<i class='bx bxl-whatsapp text-xl'></i>
-				</td>
-			</tr>
+			<?php foreach ($data["result"] as $datum): ?>
+				<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+					<td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+						<?= $datum['room_name']  ?> <?= $datum['location']  ?>
+					</td>
+					<td class="py-4 px-6">
+						<?= $datum['date'] ?>
+					</td>
+					<td class="py-4 px-6">
+						<?= $datum['start_at'] ?> - <?= $datum['end_at'] ?>
+					</td>
+					<td class="py-4 px-6 flex flex-row">
+						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['tenant_name'] ?></span>
+						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['internal'] == 1 ? "INTERNAL" : "EXTERNAL" ?></span>
+					</td>
+					<td class="py-4 px-6">
+						<a href="">
+							<i class='bx bxl-whatsapp text-xl'></i>
+						</a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>

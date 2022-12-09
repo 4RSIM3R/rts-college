@@ -42,14 +42,21 @@ class Router
 		} else {
 			$routes = $routes[$request->path];
 
+
+
 			if ($routes['method'] != $request->method) {
-				header('Location: 405.html');
+				header('Location: /rts/405.html');
 			}
 
 			$controller = new $routes['controller'];
 			$function = $routes['function'];
 
-			call_user_func_array([$controller, $function], [$request]);
+			foreach ($routes['middlewares'] as $middleware) {
+				$instance = new $middleware;
+				$instance->before();
+			}
+
+			call_user_func_array([$controller, $function], [$request, $_POST]);
 		}
 
 	}

@@ -31,6 +31,27 @@ class BaseModel
 		}
 	}
 
+	// $fromAlias, $join, $alias, $condition
+	public function join($fromAlias,array $selects = [], array $joins = [])
+	{
+		try {
+			$query = $this->database->connection->createQueryBuilder();
+			$statement = $query->from($this->table, $fromAlias);
+
+			foreach ($selects as $select) {
+				$statement->addSelect($select);
+			}
+
+			foreach ($joins as $join) {
+				$statement->join($fromAlias, $join['join'], $join['alias'], $join['condition']);
+			}
+
+			return $statement->executeQuery()->fetchAllAssociative();
+		} catch (Exception $e) {
+			return $e;
+		}
+	}
+
 	public function detail($condition, $identifier)
 	{
 		try {

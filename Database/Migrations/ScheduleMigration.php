@@ -17,7 +17,7 @@ class ScheduleMigration implements Migration
 	public function up(Schema $schema)
 	{
 		$table = $schema->createTable('schedules');
-		$table->addColumn("id", "integer", ["unsigned" => true]);
+		$table->addColumn("id", "integer", ["unsigned" => true])->setAutoincrement(true);
 		$table->addColumn("tenant_id", "integer", ["unsigned" => true]);
 		$table->addColumn("room_id", "integer", ["unsigned" => true]);
 		$table->addColumn("date", "date");

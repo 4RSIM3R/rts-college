@@ -4,10 +4,10 @@
 namespace Models;
 
 
-class Room extends BaseModel
+class Schedule extends BaseModel
 {
 
-	protected $table = "rooms";
+	protected $table = "schedules";
 
 	public function __construct()
 	{

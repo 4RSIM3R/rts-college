@@ -7,7 +7,7 @@ namespace Models;
 class Tenant extends BaseModel
 {
 
-	protected $table = "room";
+	protected $table = "rooms";
 
 	public function __construct()
 	{

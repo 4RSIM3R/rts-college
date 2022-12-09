@@ -17,7 +17,7 @@ class TenantMigration implements Migration
 	public function up(Schema $schema)
 	{
 		$table = $schema->createTable('tenants');
-		$table->addColumn("id", "integer", ["unsigned" => true]);
+		$table->addColumn("id", "integer", ["unsigned" => true])->setAutoincrement(true);
 		$table->addColumn("name", "string");
 		$table->addColumn("pic_name", "string");
 		$table->addColumn("is_internal", "boolean");
