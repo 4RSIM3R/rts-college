@@ -4,12 +4,14 @@
 namespace Controller\Home;
 
 
+use Core\View;
+
 class HomeController
 {
 
 	public function home()
 	{
-		echo "Hello World";
+		View::render("home/index", []);
 	}
 
 }
