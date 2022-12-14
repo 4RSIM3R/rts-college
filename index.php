@@ -36,8 +36,8 @@ $router::get('/admin', AdminController::class, "getAllSchedule", [AuthMiddleware
 $router::get('/admin/add', AdminController::class, "viewAddSchedule", [AuthMiddleware::class]);
 $router::post('/admin/post', AdminController::class, "doAddSchedule", [AuthMiddleware::class]);
 
-$router::get('/admin/edit', AdminController::class, "viewAddSchedule", [AuthMiddleware::class]);
-$router::post('/admin/update', AdminController::class, "getAllSchedule", [AuthMiddleware::class]);
+$router::get('/admin/edit', AdminController::class, "viewEditSchedule", [AuthMiddleware::class]);
+$router::post('/admin/update', AdminController::class, "doEditSchedule", [AuthMiddleware::class]);
 
 $router::get('/admin/delete', AdminController::class, "deleteSchedule", [AuthMiddleware::class]);
 

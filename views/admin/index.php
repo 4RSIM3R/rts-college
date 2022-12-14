@@ -2,11 +2,12 @@
 	<div class="my-4 flex flex-row justify-between items-center">
 		<p>Dashboard Admin</p>
 		<div class="flex flex-row space-x-4 items-center justify-center">
-			<a class="text-sm text-blue-500 hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin" ?>">Schedule</a>
-			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin/tenant" ?>">Tenant</a>
-			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin/room" ?>">Room</a>
+			<a class="text-sm text-blue-500 hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin" ?>">Schedule</a>
+			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin/tenant" ?>">Tenant</a>
+			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin/room" ?>">Room</a>
 		</div>
-		<a href="<?= $_ENV['BASE_URL']."admin/add" ?>" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
+		<a href="<?= $_ENV['BASE_URL'] . "admin/add" ?>"
+		   class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
 			Add Schedule
 		</a>
 	</div>
@@ -56,7 +57,7 @@
 			<?php foreach ($data["result"] as $datum): ?>
 				<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
 					<td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-						<?= $datum['room_name']  ?> <?= $datum['location']  ?>
+						<?= $datum['room_name'] ?> <?= $datum['location'] ?>
 					</td>
 					<td class="py-4 px-6">
 						<?= $datum['date'] ?>
@@ -69,8 +70,11 @@
 						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['internal'] == 1 ? "INTERNAL" : "EXTERNAL" ?></span>
 					</td>
 					<td class="py-4 px-6">
-						<a href="">
-							<i class='bx bxl-whatsapp text-xl'></i>
+						<a href="<?= $_ENV['BASE_URL'] . "admin/edit?id=". $datum['id'] ?>">
+							<i class='bx bx-pencil'></i>
+						</a>
+						<a href="<?= $_ENV['BASE_URL'] . "admin/delete?id=" . $datum['id'] ?>">
+							<i class='bx bx-trash'></i>
 						</a>
 					</td>
 				</tr>
