@@ -39,6 +39,8 @@ $router::post('/admin/post', AdminController::class, "doAddSchedule", [AuthMiddl
 $router::get('/admin/edit', AdminController::class, "viewAddSchedule", [AuthMiddleware::class]);
 $router::post('/admin/update', AdminController::class, "getAllSchedule", [AuthMiddleware::class]);
 
+$router::get('/admin/delete', AdminController::class, "deleteSchedule", [AuthMiddleware::class]);
+
 // Get All Tenant
 $router::get('/admin/tenant', TenantController::class, "getAllTenant", [AuthMiddleware::class]);
 
@@ -50,7 +52,7 @@ $router::post('/admin/tenant/post', TenantController::class, "doAddTenant", [Aut
 $router::get('/admin/tenant/edit', TenantController::class, "viewEditTenant", [AuthMiddleware::class]);
 $router::post('/admin/tenant/update', TenantController::class, "doEditTenant", [AuthMiddleware::class]);
 
-$router::post('/admin/tenant/delete', TenantController::class, "deleteTenant", [AuthMiddleware::class]);
+$router::get('/admin/tenant/delete', TenantController::class, "deleteTenant", [AuthMiddleware::class]);
 
 // Get All Room
 $router::get('/admin/room', RoomController::class, "getAllRoom", [AuthMiddleware::class]);
@@ -63,7 +65,7 @@ $router::post('/admin/room/post', RoomController::class, "doAddRoom", [AuthMiddl
 $router::get('/admin/room/edit', RoomController::class, "viewEditRoom", [AuthMiddleware::class]);
 $router::post('/admin/room/update', RoomController::class, "doEditRoom", [AuthMiddleware::class]);
 
-$router::post('/admin/room/delete', RoomController::class, "deleteRoom", [AuthMiddleware::class]);
+$router::get('/admin/room/delete', RoomController::class, "deleteRoom", [AuthMiddleware::class]);
 
 $router::run();
 

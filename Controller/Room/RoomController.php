@@ -10,10 +10,17 @@ use Models\Room;
 class RoomController
 {
 
+	protected Room $model;
+
+	public function __construct()
+	{
+		$this->model = new Room();
+	}
+
 	public function getAllRoom()
 	{
 		$model = new Room();
-		View::render("room/index", ["result" => $model->all()]);
+		View::render("room/index", ["result" => $this->model->all()]);
 	}
 
 	public function viewAddRoom()
@@ -23,24 +30,30 @@ class RoomController
 
 	public function doAddRoom($request, $post)
 	{
-		$model = new Room();
-		$model->insert($post);
+		$this->model->insert($post);
 		header(sprintf('location: %s%s', $_ENV['BASE_URL'], "admin/room"));
 	}
 
-	public function viewEditRoom()
+	public function viewEditRoom($request, $post)
 	{
-
+		$model = new Room();
+		$id = $request->params["id"];
+		$data = $this->model->detail("id", $id);
+		View::render("room/edit", $data);
 	}
 
-	public function doEditRoom()
+	public function doEditRoom($request, $post)
 	{
-
+		$id = $request->params["id"];
+		$result = $this->model->update($post, ["id" => $id]);
+		header(sprintf('location: %s%s', $_ENV['BASE_URL'], "admin/room"));
 	}
 
-	public function deleteRoom()
+	public function deleteRoom($request, $post)
 	{
-
+		$id = $request->params["id"];
+		$result = $this->model->delete(["id" => $id]);
+		header(sprintf('location: %s%s', $_ENV['BASE_URL'], "admin/room"));
 	}
 
 }
