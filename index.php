@@ -3,6 +3,8 @@
 use Controller\Admin\AdminController;
 use Controller\Auth\AuthController;
 use Controller\Home\HomeController;
+use Controller\Room\RoomController;
+use Controller\Tenant\TenantController;
 use Core\Router;
 use Dotenv\Dotenv;
 use Middleware\AuthMiddleware;
@@ -17,6 +19,8 @@ try {
 	die(0);
 }
 
+session_start();
+
 $router = new Router();
 
 $router::get('/', HomeController::class, "home", []);
@@ -25,18 +29,41 @@ $router::get('/', HomeController::class, "home", []);
 $router::get('/login', AuthController::class, "viewLogin", []);
 $router::post('/post-login', AuthController::class, "doLogin", []);
 
+// Get All Schedule
+$router::get('/admin', AdminController::class, "getAllSchedule", [AuthMiddleware::class]);
+
+// Create Schedule
+$router::get('/admin/add', AdminController::class, "viewAddSchedule", [AuthMiddleware::class]);
+$router::post('/admin/post', AdminController::class, "doAddSchedule", [AuthMiddleware::class]);
+
+$router::get('/admin/edit', AdminController::class, "viewAddSchedule", [AuthMiddleware::class]);
+$router::post('/admin/update', AdminController::class, "getAllSchedule", [AuthMiddleware::class]);
+
 // Get All Tenant
-$router::get('/admin', AdminController::class, "getAllTenant", [AuthMiddleware::class]);
+$router::get('/admin/tenant', TenantController::class, "getAllTenant", [AuthMiddleware::class]);
 
 // Create Tenant
-$router::get('/tenant/add', AdminController::class, "viewAddTenant", [AuthMiddleware::class]);
-$router::post('/tenant/post', AdminController::class, "doAddTenant", [AuthMiddleware::class]);
+$router::get('/admin/tenant/add', TenantController::class, "viewAddTenant", [AuthMiddleware::class]);
+$router::post('/admin/tenant/post', TenantController::class, "doAddTenant", [AuthMiddleware::class]);
 
 // Update Tenant
-$router::get('/tenant/edit', AdminController::class, "viewEditTenant", [AuthMiddleware::class]);
-$router::post('/tenant/update', AdminController::class, "doEditTenant", [AuthMiddleware::class]);
+$router::get('/admin/tenant/edit', TenantController::class, "viewEditTenant", [AuthMiddleware::class]);
+$router::post('/admin/tenant/update', TenantController::class, "doEditTenant", [AuthMiddleware::class]);
 
-$router::post('/tenant/delete', AdminController::class, "deleteTenant", [AuthMiddleware::class]);
+$router::post('/admin/tenant/delete', TenantController::class, "deleteTenant", [AuthMiddleware::class]);
+
+// Get All Room
+$router::get('/admin/room', RoomController::class, "getAllRoom", [AuthMiddleware::class]);
+
+// Create Room
+$router::get('/admin/room/add', RoomController::class, "viewAddRoom", [AuthMiddleware::class]);
+$router::post('/admin/room/post', RoomController::class, "doAddRoom", [AuthMiddleware::class]);
+
+// Update Room
+$router::get('/admin/room/edit', RoomController::class, "viewEditRoom", [AuthMiddleware::class]);
+$router::post('/admin/room/update', RoomController::class, "doEditRoom", [AuthMiddleware::class]);
+
+$router::post('/admin/room/delete', RoomController::class, "deleteRoom", [AuthMiddleware::class]);
 
 $router::run();
 

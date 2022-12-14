@@ -7,6 +7,7 @@ use Database\Migrations\RoomMigrations;
 use Database\Migrations\ScheduleMigration;
 use Database\Migrations\TenantMigration;
 use Database\Migrations\UserMigration;
+use Database\Seeder\UserSeeder;
 use Dotenv\Dotenv;
 
 require "vendor/autoload.php";
@@ -26,7 +27,25 @@ $migrations = [
 	new ScheduleMigration(),
 ];
 
+$seeders = [
+	new UserSeeder(),
+];
+
 $database = Database::getInstance();
+
+$commandMap = [
+	"migrate" => [
+		"up" => function () use ($database, $migrations) {
+			$database->migrate($migrations);
+		},
+		"rollback" => function () use ($database, $migrations) {
+			$database->down($migrations);
+		},
+		"seed" => function () use ($database, $seeders) {
+			$database->seed($seeders);
+		},
+	]
+];
 
 if (!isset($argv[1])) {
 	printf("Invalid Command");
@@ -34,10 +53,7 @@ if (!isset($argv[1])) {
 }
 
 // more command pattern matching here
-// $arguments = explode(":", $argv[1]);
+$args = explode(":", $argv[1]);
 
-if ($argv[1] == "migrate:up") {
-	$database->migrate($migrations);
-} else if ($argv[1] == "migrate:rollback") {
-	$database->down($migrations);
-}
+$commandMap[$args[0]][$args[1]]();
+

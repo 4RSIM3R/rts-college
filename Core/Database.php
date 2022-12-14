@@ -49,7 +49,6 @@ class Database
 	public function migrate($migrations = [])
 	{
 
-
 		try {
 
 			$schema = $this->connection->createSchemaManager()->introspectSchema();
@@ -89,6 +88,15 @@ class Database
 			var_dump($e);
 			die(0);
 		}
+	}
+
+	public function seed($seeders = [])
+	{
+
+		foreach ($seeders as $seeder) {
+			$seeder->create($this->connection);
+		}
+
 	}
 
 }

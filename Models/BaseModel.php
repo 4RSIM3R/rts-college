@@ -52,7 +52,7 @@ class BaseModel
 		}
 	}
 
-	public function detail($condition, $identifier)
+	public function detail($identifier, $condition)
 	{
 		try {
 			$statement = $this->database->connection->prepare("SELECT * FROM {$this->table} WHERE {$identifier} = ?");

@@ -5,7 +5,9 @@ namespace Controller\Home;
 
 
 use Core\View;
+use Models\Room;
 use Models\Schedule;
+use Models\Tenant;
 
 class HomeController
 {
@@ -25,5 +27,7 @@ class HomeController
 
 		View::render("home/index", ["result" => $data]);
 	}
+
+
 
 }

@@ -2,12 +2,13 @@
 	<div class="my-4 flex flex-row justify-between items-center">
 		<p>Dashboard Admin</p>
 		<div class="flex flex-row space-x-4 items-center justify-center">
-			<a class="text-sm text-blue-500 hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin" ?>">Schedule</a>
-			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin/tenant" ?>">Tenant</a>
-			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL']."admin/room" ?>">Room</a>
+			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin" ?>">Schedule</a>
+			<a class="text-sm hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin/tenant" ?>">Tenant</a>
+			<a class="text-sm text-blue-500 hover:text-blue-600" href="<?= $_ENV['BASE_URL'] . "admin/room" ?>">Room</a>
 		</div>
-		<a href="<?= $_ENV['BASE_URL']."admin/add" ?>" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
-			Add Schedule
+		<a href="<?= $_ENV['BASE_URL'] . "admin/room/add" ?>"
+		   class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
+			Add Room
 		</a>
 	</div>
 	<hr/>
@@ -36,16 +37,13 @@
 			<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 			<tr>
 				<th scope="col" class="py-3 px-6">
-					Room
+					ID
 				</th>
 				<th scope="col" class="py-3 px-6">
-					Date
+					Name
 				</th>
 				<th scope="col" class="py-3 px-6">
-					Duration
-				</th>
-				<th scope="col" class="py-3 px-6">
-					Tenant
+					Location
 				</th>
 				<th scope="col" class="py-3 px-6">
 					Action
@@ -56,28 +54,24 @@
 			<?php foreach ($data["result"] as $datum): ?>
 				<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
 					<td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-						<?= $datum['room_name']  ?> <?= $datum['location']  ?>
+						<?= $datum['id']  ?>
 					</td>
 					<td class="py-4 px-6">
-						<?= $datum['date'] ?>
+						<?= $datum['name']  ?>
 					</td>
 					<td class="py-4 px-6">
-						<?= $datum['start_at'] ?> - <?= $datum['end_at'] ?>
-					</td>
-					<td class="py-4 px-6 flex flex-row">
-						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['tenant_name'] ?></span>
-						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['internal'] == 1 ? "INTERNAL" : "EXTERNAL" ?></span>
+						<?= $datum['location']  ?>
 					</td>
 					<td class="py-4 px-6">
-						<a href="">
-							<i class='bx bxl-whatsapp text-xl'></i>
-						</a>
+						<div class=" flex flex-row space-x-4">
+							<i class='bx bx-pencil'></i>
+							<i class='bx bx-trash'></i>
+						</div>
 					</td>
 				</tr>
 			<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
-
 
 </div>

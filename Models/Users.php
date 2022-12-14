@@ -4,10 +4,10 @@
 namespace Models;
 
 
-class Tenant extends BaseModel
+class Users extends BaseModel
 {
 
-	protected $table = "tenants";
+	protected $table = "users";
 
 	public function __construct()
 	{
