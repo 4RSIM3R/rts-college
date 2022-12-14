@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto">
 
 	<form action="<?= $_ENV['BASE_URL'] . "admin/tenant/post" ?>" method="post" class="p-12 flex flex-col space-y-4">
-		<p>Add Room</p>
+		<p>Add Tenant</p>
 		<div>
 			<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
 			<input type="text" id="name" name="name"

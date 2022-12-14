@@ -71,8 +71,12 @@
 					</td>
 					<td class="py-4 px-6">
 						<div class=" flex flex-row space-x-4">
-							<i class='bx bx-pencil'></i>
-							<i class='bx bx-trash'></i>
+							<a href="<?= $_ENV['BASE_URL'] . "admin/tenant/edit?id=".$datum['id'] ?>">
+								<i class='bx bx-pencil'></i>
+							</a>
+							<a href="<?= $_ENV['BASE_URL'] . "admin/tenant/delete?id=".$datum['id'] ?>">
+								<i class='bx bx-trash'></i>
+							</a>
 						</div>
 
 					</td>

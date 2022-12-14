@@ -36,7 +36,6 @@ class RoomController
 
 	public function viewEditRoom($request, $post)
 	{
-		$model = new Room();
 		$id = $request->params["id"];
 		$data = $this->model->detail("id", $id);
 		View::render("room/edit", $data);
