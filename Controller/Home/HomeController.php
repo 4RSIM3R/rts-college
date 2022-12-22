@@ -21,13 +21,21 @@ class HomeController
 
 		$data = $model->join(
 			"s",
-			['r.name as room_name', 'r.location as location', 's.date as date', 's.start_at as start_at', 's.end_at as end_at', 't.name as tenant_name', 't.is_internal as internal'],
+			[
+				'r.name as room_name',
+				'r.location as location',
+				's.date as date',
+				's.start_at as start_at',
+				's.end_at as end_at',
+				't.name as tenant_name',
+				't.is_internal as internal',
+				't.phone_number as phone_number'
+			],
 			[$roomsJoin, $tenantJoin]
 		);
 
 		View::render("home/index", ["result" => $data]);
 	}
-
 
 
 }

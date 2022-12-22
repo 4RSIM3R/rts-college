@@ -14,6 +14,12 @@
 				   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
 				   required autocomplete="off">
 		</div>
+		<div>
+			<label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+			<input type="number" id="phone_number" name="phone_number"
+			       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+			       required autocomplete="off">
+		</div>
 		<div class="flex items-center mb-4">
 			<input id="is_internal" type="checkbox" name="is_internal" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
 			<label for="is_internal" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Internal ?</label>

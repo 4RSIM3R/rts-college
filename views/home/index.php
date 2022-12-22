@@ -2,37 +2,25 @@
 
 	<div class="my-4 flex flex-row justify-between items-center">
 		<p>Room Tenant System</p>
-		<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
+		<div class="relative max-w-xl">
+			<form>
+				<div class="flex">
+					<input type="search" id="search-dropdown"
+					       class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-md border-gray-50 border-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+					       placeholder="Search Room" required>
+				</div>
+			</form>
+		</div>
+		<a href="mailto:someone@example.com" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm px-5 py-2">
 			Ask For Rent
-		</button>
+		</a>
 	</div>
 	<hr/>
-	<div class="max-w-md my-4">
+	<div class="max-w-lg my-4">
 		<p class="text-sm">
-			Aku Benci Untuk Mencintaimu, aku tak tau apa yang terjadi
-			Yang kutau pasti.., aku benci untuk mencintaimu <|^_^|>
+			Si Luna (Siap, Lugas, Amanah)
 		</p>
 	</div>
-
-	<form>
-		<div class="flex">
-			<div class="relative w-full">
-				<input type="search" id="search-dropdown"
-				       class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-md border-gray-50 border-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
-				       placeholder="Search Room" required>
-				<button type="submit"
-				        class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-md border border-blue-700 hover:bg-blue-800">
-					<svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-					     xmlns="http://www.w3.org/2000/svg">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-					</svg>
-					<span class="sr-only">Search</span>
-				</button>
-			</div>
-		</div>
-	</form>
-
 
 	<div class="overflow-x-auto relative my-8">
 		<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -72,7 +60,7 @@
 						<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><?= $datum['internal'] == 1 ? "INTERNAL" : "EXTERNAL" ?></span>
 					</td>
 					<td class="py-4 px-6">
-						<a href="">
+						<a href="https://wa.me/<?= $datum['phone_number'] ?>">
 							<i class='bx bxl-whatsapp text-xl'></i>
 						</a>
 					</td>

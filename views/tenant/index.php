@@ -66,6 +66,9 @@
 					<td class="py-4 px-6">
 						<?= $datum['pic_name'] ?>
 					</td>
+					<td class="py-4 px-6">
+						<?= $datum['phone_number'] ?>
+					</td>
 					<td class="py-4 px-6 flex flex-row">
 						<?= $datum['is_internal'] == 1 ? "YES" : "NO" ?>
 					</td>

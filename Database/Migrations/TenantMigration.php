@@ -21,6 +21,7 @@ class TenantMigration implements Migration
 		$table->addColumn("name", "string");
 		$table->addColumn("pic_name", "string");
 		$table->addColumn("is_internal", "boolean");
+		$table->addColumn("phone_number", "string");
 		$table->setPrimaryKey(["id"]);
 	}
 
